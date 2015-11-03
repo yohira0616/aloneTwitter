@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import jp.ne.yohira.model.dao.TweetDaoSpec;
 import jp.ne.yohira.model.dto.TweetDto;
+import jp.ne.yohira.model.param.TweetInsParam;
 
 @Service
 public class AloneTwitterService implements AloneTwitterServiceSpec {
@@ -27,6 +28,12 @@ public class AloneTwitterService implements AloneTwitterServiceSpec {
 
 	@Override
 	public void delete(long postId) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
+
+	@Override
+	public void insert(TweetInsParam param) {
 		// TODO 自動生成されたメソッド・スタブ
 
 	}

@@ -12,7 +12,7 @@
 <body>
 	<div class="container">
 		<div class="jumbotron">
-			<h1>Alone Twitter(Sample App)</h1>
+			<h1>${appTitle}</h1>
 		</div>
 	</div>
 	<div class="container">

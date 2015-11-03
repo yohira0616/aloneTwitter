@@ -3,6 +3,7 @@ package jp.ne.yohira.model.service;
 import java.util.List;
 
 import jp.ne.yohira.model.dto.TweetDto;
+import jp.ne.yohira.model.param.TweetInsParam;
 
 /**
  * alone twitter service
@@ -20,6 +21,11 @@ public interface AloneTwitterServiceSpec {
 	 * @param dto
 	 */
 	public void insert(TweetDto dto);
+
+	/**
+	 *
+	 */
+	public void insert(TweetInsParam param);
 
 	/**
 	 * ポストを削除
