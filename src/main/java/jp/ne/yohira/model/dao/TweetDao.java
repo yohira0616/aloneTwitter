@@ -1,11 +1,8 @@
 package jp.ne.yohira.model.dao;
 
-import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
-
-import com.google.common.collect.Lists;
 
 import jp.ne.yohira.common.DaoBase;
 import jp.ne.yohira.model.dao.query.TweetDaoDeleteQuery;
@@ -33,21 +30,10 @@ public class TweetDao extends DaoBase implements TweetDaoSpec {
 		new TweetDaoInsertQuery(getDataSource()).create(dto);
 	}
 
-	@SuppressWarnings("unused")
-	private List<TweetDto> getMock() {
-		List<TweetDto> tweets = Lists.newArrayList();
-		TweetDto dto = new TweetDto();
-		dto.setPostId(0);
-		dto.setContents("This is Test Contents");
-		dto.setPrcDate(Calendar.getInstance().getTime());
-		tweets.add(dto);
-		return tweets;
-	}
-
 	@Override
 	public long getNewPostId() {
-		Long lastId = new TweetDaoPostIdSeq(getDataSource()).execute().get(0);
-		return ++lastId;
+		List<Long> postIds = new TweetDaoPostIdSeq(getDataSource()).execute();
+		return postIds.isEmpty() ? 0L : postIds.get(0) + 1;
 	}
 
 }
