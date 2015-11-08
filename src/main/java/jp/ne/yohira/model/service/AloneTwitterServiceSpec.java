@@ -20,11 +20,6 @@ public interface AloneTwitterServiceSpec {
 	 * 新しいポストを追加
 	 * @param dto
 	 */
-	public void insert(TweetDto dto);
-
-	/**
-	 *
-	 */
 	public void insert(TweetInsParam param);
 
 	/**

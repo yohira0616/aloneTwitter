@@ -3,7 +3,7 @@
 
     $(function () {
 
-        commonJsonSend(null, 'http://localhost:8888/alonetwitter/getTweets', function (data) {
+        AloneTwitter.common.Ajax.send(null, 'http://localhost:8888/alonetwitter/getTweets', function (data) {
             var $target = $('#post-content-render-block');
             $.each(data, function () {
                 var makedHtml = makePostElement(this);
@@ -23,18 +23,23 @@
             var tweetInsParam = {
                 contents: content
             };
-            commonJsonSend(tweetInsParam, 'http://localhost:8888/alonetwitter/create', function () {
+            AloneTwitter.common.Ajax.send(tweetInsParam, 'http://localhost:8888/alonetwitter/create', function () {
                 alert('書き込みました！');
             });
         });
 
-        $('body').on('click', 'a.post-delete', function () {
-            alert('deleted!');
+        $('body').on('click', 'a.post-delete', function (e) {
+            var $this = $(e.toElement);
+            var $parentPanel = $this.parents('.panel.panel-default');
+            var postId = $parentPanel.attr('data-itemId');
+            console.log(postId);
+            AloneTwitter.common.Ajax.send(null, 'http://localhost:8888/alonetwitter/delete/' + postId, function () {
+                alert('削除しました');
+            }, 'html');
         });
 
         //private functions
         function makePostElement(data) {
-            console.log(data);
             var html = '';
             html += '<div class="panel panel-default" data-postid="' + data.postId + '">';
             html += '<div class="panel-body">';
@@ -53,6 +58,7 @@
 
         function validate() {
             if ($('#tweet-contents').val() === '') {
+                alert('空欄です');
                 return false;
             }
             return true;

@@ -2,6 +2,8 @@ package jp.ne.yohira.controller.alone.twitter;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,6 +22,8 @@ import jp.ne.yohira.model.service.AloneTwitterServiceSpec;
 @RequestMapping("/alonetwitter")
 @Controller
 public class AloneTwitterController {
+
+	private static final Logger logger = LoggerFactory.getLogger(AloneTwitterController.class);
 
 	@Autowired
 	private AloneTwitterServiceSpec aloneTwitterService;
@@ -40,13 +44,14 @@ public class AloneTwitterController {
 	@ResponseStatus(HttpStatus.OK)
 	public void create(Model model, @RequestBody TweetInsParam param) {
 		aloneTwitterService.insert(param);
-		System.out.println("insert done!");
+		logger.debug("POST SUCCEEDED!");
 	}
 
 	@RequestMapping(value = "/delete/{postId}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public void delete(Model model, @PathVariable long postId) {
 		aloneTwitterService.delete(postId);
+		logger.debug("DELETE SUCCEEDED!");
 	}
 
 }

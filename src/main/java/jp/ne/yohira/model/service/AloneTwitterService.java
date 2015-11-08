@@ -21,12 +21,6 @@ public class AloneTwitterService implements AloneTwitterServiceSpec {
 	}
 
 	@Override
-	public void insert(TweetDto dto) {
-		// TODO 自動生成されたメソッド・スタブ
-
-	}
-
-	@Override
 	public void delete(long postId) {
 		tweetDao.delete(postId);
 	}
