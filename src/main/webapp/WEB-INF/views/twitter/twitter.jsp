@@ -39,13 +39,14 @@
 		</div>
 	</div>
 
-	<!-- alerts-->
 
 	<script src="../lib/bower_components/jquery/dist/jQuery.min.js"></script>
 	<script
 		src="../lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script
+		src="../lib/bower_components/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js"></script>
 	<script src="../js/package.js"></script>
-	<script src="../js/common.Ajax.js"></script>
+	<script src="../js/common/Ajax.js"></script>
 	<script src="../js/twitter.js"></script>
 </body>
 </html>

@@ -3,13 +3,7 @@
 
     $(function () {
 
-        AloneTwitter.common.Ajax.send(null, 'http://localhost:8888/alonetwitter/getTweets', function (data) {
-            var $target = $('#post-content-render-block');
-            $.each(data, function () {
-                var makedHtml = makePostElement(this);
-                $target.append(makedHtml);
-            });
-        });
+        loadPosts();
 
         $('#delete-post').on('click', function () {
             $('#tweet-contents').val('');
@@ -24,17 +18,20 @@
                 contents: content
             };
             AloneTwitter.common.Ajax.send(tweetInsParam, 'http://localhost:8888/alonetwitter/create', function () {
-                alert('書き込みました！');
-            });
+                $('#post-content-render-block').empty();
+                loadPosts();
+                $.notify('書き込みました！');
+            },'html');
         });
 
         $('body').on('click', 'a.post-delete', function (e) {
-            var $this = $(e.toElement);
-            var $parentPanel = $this.parents('.panel.panel-default');
-            var postId = $parentPanel.attr('data-itemId');
+            console.log(this);
+            var $this = $(this);
+            var postId = $this.parents('.panel.panel-default').attr('data-postId');
             console.log(postId);
             AloneTwitter.common.Ajax.send(null, 'http://localhost:8888/alonetwitter/delete/' + postId, function () {
-                alert('削除しました');
+                $this.parents('.panel.panel-default').remove();
+                $.notify('削除しました');
             }, 'html');
         });
 
@@ -58,26 +55,20 @@
 
         function validate() {
             if ($('#tweet-contents').val() === '') {
-                alert('空欄です');
+                $.notify('空欄です');
                 return false;
             }
             return true;
         }
 
-        //TODO common化
-        function commonJsonSend(obj, url, successFunc, dataType) {
-            $.ajax({
-                type: 'POST',
-                url: url,
-                data: JSON.stringify(obj),
-                contentType: 'application/JSON',
-                dataType: dataType || 'JSON',
-                success: successFunc,
-                error: function (xhr, status, error) {
-                    console.log(status);
-                    console.log(error);
-                }
-            })
+        function loadPosts(){
+            AloneTwitter.common.Ajax.send(null, 'http://localhost:8888/alonetwitter/getTweets', function (data) {
+                var $target = $('#post-content-render-block');
+                $.each(data, function () {
+                    var makedHtml = makePostElement(this);
+                    $target.append(makedHtml);
+                });
+            });
         }
     });
 })(jQuery);
