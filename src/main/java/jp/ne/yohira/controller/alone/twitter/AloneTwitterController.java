@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,13 +36,14 @@ public class AloneTwitterController {
 		return aloneTwitterService.getTweets();
 	}
 
-	@RequestMapping("/create")
+	@RequestMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public void create(Model model, @RequestBody TweetInsParam param) {
 		aloneTwitterService.insert(param);
+		System.out.println("insert done!");
 	}
 
-	@RequestMapping("/delete/{postId}")
+	@RequestMapping(value = "/delete/{postId}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public void delete(Model model, @PathVariable long postId) {
 		aloneTwitterService.delete(postId);

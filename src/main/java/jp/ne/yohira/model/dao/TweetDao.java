@@ -47,7 +47,7 @@ public class TweetDao extends DaoBase implements TweetDaoSpec {
 	@Override
 	public long getNewPostId() {
 		Long lastId = new TweetDaoPostIdSeq(getDataSource()).execute().get(0);
-		return lastId++;
+		return ++lastId;
 	}
 
 }

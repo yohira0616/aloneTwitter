@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="Cache-Control" content="no-cache">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet"
 	href="../lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
