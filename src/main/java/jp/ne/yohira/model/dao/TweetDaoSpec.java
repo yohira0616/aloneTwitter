@@ -12,4 +12,6 @@ public interface TweetDaoSpec {
 
 	public void createTweet(TweetDto dto);
 
+	public long getNewPostId();
+
 }

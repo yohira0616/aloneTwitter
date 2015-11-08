@@ -9,7 +9,11 @@
             url: 'http://localhost:8888/alonetwitter/getTweets',
             dataType: 'json',
             success: function (data) {
-                console.log(data);
+                var $target=$('#post-content-render-block');
+                $.each(data,function(){
+                   var makedHtml=makePostElement(this);
+                    $target.append(makedHtml);
+                });
             }
         });
 
@@ -28,10 +32,12 @@
 
         //private functions
         function makePostElement(data) {
+            console.log(data);
             var html='';
             html+='<div class="panel panel-default" data-postid="">';
             html+='<div class="panel-body">';
-            html+='<div class="post-contents">'
+            html+='<div class="post-contents">';
+            html+='</div>';
             html+='</div>';
             html+='<div class="panel-footer">';
             html+='<span class="post-date">';

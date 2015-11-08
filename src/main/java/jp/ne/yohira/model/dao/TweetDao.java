@@ -7,30 +7,33 @@ import org.springframework.stereotype.Repository;
 
 import com.google.common.collect.Lists;
 
+import jp.ne.yohira.common.DaoBase;
+import jp.ne.yohira.model.dao.query.TweetDaoDeleteQuery;
+import jp.ne.yohira.model.dao.query.TweetDaoInsertQuery;
+import jp.ne.yohira.model.dao.query.TweetDaoPostIdSeq;
+import jp.ne.yohira.model.dao.query.TweetDaoSelectQuery;
 import jp.ne.yohira.model.dto.TweetDto;
 
 @Repository
-public class TweetDao implements TweetDaoSpec {
+public class TweetDao extends DaoBase implements TweetDaoSpec {
 
 	@Override
 	public List<TweetDto> getTweets() {
-		//TweetDaoSelectQuery query = new TweetDaoSelectQuery();
-		//query.execute();
-		return getMock();
+		TweetDaoSelectQuery query = new TweetDaoSelectQuery(getDataSource());
+		return query.execute();
 	}
 
 	@Override
 	public void delete(long postId) {
-		// TODO 自動生成されたメソッド・スタブ
-
+		new TweetDaoDeleteQuery(getDataSource()).delete(postId);
 	}
 
 	@Override
 	public void createTweet(TweetDto dto) {
-		// TODO 自動生成されたメソッド・スタブ
-
+		new TweetDaoInsertQuery(getDataSource()).create(dto);
 	}
 
+	@SuppressWarnings("unused")
 	private List<TweetDto> getMock() {
 		List<TweetDto> tweets = Lists.newArrayList();
 		TweetDto dto = new TweetDto();
@@ -39,6 +42,12 @@ public class TweetDao implements TweetDaoSpec {
 		dto.setPrcDate(Calendar.getInstance().getTime());
 		tweets.add(dto);
 		return tweets;
+	}
+
+	@Override
+	public long getNewPostId() {
+		Long lastId = new TweetDaoPostIdSeq(getDataSource()).execute().get(0);
+		return lastId++;
 	}
 
 }

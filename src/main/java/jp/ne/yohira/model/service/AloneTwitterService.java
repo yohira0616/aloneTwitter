@@ -28,14 +28,15 @@ public class AloneTwitterService implements AloneTwitterServiceSpec {
 
 	@Override
 	public void delete(long postId) {
-		// TODO 自動生成されたメソッド・スタブ
-
+		tweetDao.delete(postId);
 	}
 
 	@Override
 	public void insert(TweetInsParam param) {
-		// TODO 自動生成されたメソッド・スタブ
-
+		TweetDto dto = new TweetDto();
+		dto.setPostId(tweetDao.getNewPostId());
+		dto.setContents(param.getContents());
+		tweetDao.createTweet(dto);
 	}
 
 }
