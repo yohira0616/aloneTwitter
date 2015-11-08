@@ -3,3 +3,4 @@ target/
 .project
 .mvn/
 src/main/resources/static/lib/bower_components/
+src/main/.idea/
