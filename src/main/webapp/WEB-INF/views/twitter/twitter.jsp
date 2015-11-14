@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,7 @@
 <link rel="stylesheet"
 	href="../lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/aloneTwitter.css">
-	<link ref="stylesheet" href="../lib/bower_components/animate.css/animate.min.css">
+	<link rel="stylesheet" href="../lib/bower_components/animate.css/animate.min.css">
 <title>Alone Twitter</title>
 </head>
 <body>
@@ -31,9 +32,11 @@
 	</div>
 
 
-	<script src="../lib/bower_components/jquery/dist/jQuery.min.js"></script>
+	<!-- <script src="../lib/bower_components/jquery/dist/jQuery.min.js"></script>
 	<script
-		src="../lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		src="../lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script> -->
+	<script src="webjars/jquery/2.1.4/jQuery.min.js"></script>
+	<script src="webjars/boostrap/3.3.5/bootstrap.min.js"></script>
 	<script
 		src="../lib/bower_components/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js"></script>
 	<script src="../js/package.js"></script>
