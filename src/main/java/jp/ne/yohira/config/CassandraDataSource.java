@@ -8,7 +8,6 @@ import com.datastax.driver.core.Session;
 
 /**
  * Cassandraへの接続コネクションを設定する
- * @author yukito ohira
  *
  */
 @Configuration
