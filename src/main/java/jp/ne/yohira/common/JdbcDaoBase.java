@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
  * jdbcのコネクションを渡すために必要なBaseDao
  * これを継承したDaoはgetDataSourceでDBとのコネクションを取得できる。
  */
-public abstract class DaoBase {
+public abstract class JdbcDaoBase {
 
 	@Autowired
 	protected JdbcTemplate template;

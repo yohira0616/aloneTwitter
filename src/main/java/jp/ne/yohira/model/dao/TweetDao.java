@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import jp.ne.yohira.common.DaoBase;
+import jp.ne.yohira.common.JdbcDaoBase;
 import jp.ne.yohira.model.dao.query.TweetDaoDeleteQuery;
 import jp.ne.yohira.model.dao.query.TweetDaoInsertQuery;
 import jp.ne.yohira.model.dao.query.TweetDaoPostIdSeq;
@@ -12,7 +12,7 @@ import jp.ne.yohira.model.dao.query.TweetDaoSelectQuery;
 import jp.ne.yohira.model.dto.TweetDto;
 
 @Repository
-public class TweetDao extends DaoBase implements TweetDaoSpec {
+public class TweetDao extends JdbcDaoBase implements TweetDaoSpec {
 
 	@Override
 	public List<TweetDto> getTweets() {
