@@ -18,4 +18,8 @@ public abstract class DaoBase {
 		return template.getDataSource();
 	}
 
+	protected JdbcTemplate getTemplate() {
+		return template;
+	}
+
 }
