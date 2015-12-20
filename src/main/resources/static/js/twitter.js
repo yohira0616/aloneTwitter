@@ -4,6 +4,7 @@
     $(function () {
 
         loadPosts();
+        var hostUrl='http://localhost:1243';
 
         $('#delete-post').on('click', function () {
             $('#tweet-contents').val('');
@@ -17,7 +18,7 @@
             var tweetInsParam = {
                 contents: content
             };
-            AloneTwitter.common.Ajax.send(tweetInsParam, 'http://localhost:8888/alonetwitter/create', function () {
+            AloneTwitter.common.Ajax.send(tweetInsParam, hostUrl+'/alonetwitter/create', function () {
                 $('#post-content-render-block').empty();
                 loadPosts();
                 $.notify('書き込みました！');
@@ -29,7 +30,7 @@
             var $this = $(this);
             var postId = $this.parents('.panel.panel-default').attr('data-postId');
             console.log(postId);
-            AloneTwitter.common.Ajax.send(null, 'http://localhost:8888/alonetwitter/delete/' + postId, function () {
+            AloneTwitter.common.Ajax.send(null, hostUrl+'/alonetwitter/delete/' + postId, function () {
                 $this.parents('.panel.panel-default').remove();
                 $.notify('削除しました');
             }, 'html');
@@ -62,7 +63,7 @@
         }
 
         function loadPosts(){
-            AloneTwitter.common.Ajax.send(null, 'http://localhost:8888/alonetwitter/getTweets', function (data) {
+            AloneTwitter.common.Ajax.send(null, hostUrl+'/alonetwitter/getTweets', function (data) {
                 var $target = $('#post-content-render-block');
                 $.each(data, function () {
                     var makedHtml = makePostElement(this);
