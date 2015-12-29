@@ -1,0 +1,15 @@
+{
+  "name": "alone-twitter",
+  "version": "0.0.0",
+  "description": "sample-application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "yohira",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "gulp": "~3.9.0",
+    "gulp-sass": "~2.1.1"
+  }
+}

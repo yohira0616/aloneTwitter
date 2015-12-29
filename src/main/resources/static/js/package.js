@@ -1,3 +1,3 @@
-var AloneTwitter={};
-AloneTwitter.common={};
-AloneTwitter.components={};
+var AloneTwitter = {};
+AloneTwitter.common = {};
+AloneTwitter.components = {};

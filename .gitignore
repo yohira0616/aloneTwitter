@@ -5,3 +5,4 @@ target/
 src/main/resources/static/lib/bower_components/
 src/main/.idea/
 src/main/resources/.idea/
+src/main/resources/static/node_modules/
