@@ -11,7 +11,7 @@ import jp.ne.yohira.model.dto.TweetDto;
 
 public class TweetDaoSelectQuery extends MappingSqlQuery<TweetDto> {
 
-	private static final String SELECT_SQL = "SELECT * FROM tweet ORDER BY PRC_DATE DESC";
+	private static final String SELECT_SQL = "SELECT post_id,contents,prc_date FROM tweet ORDER BY PRC_DATE DESC";
 
 	public TweetDaoSelectQuery(DataSource ds) {
 		super(ds, SELECT_SQL);
