@@ -44,14 +44,12 @@ public class AloneTwitterController {
 	@ResponseStatus(HttpStatus.OK)
 	public void create(Model model, @RequestBody TweetInsParam param) {
 		aloneTwitterService.insert(param);
-		logger.debug("POST SUCCEEDED!");
 	}
 
 	@RequestMapping(value = "/delete/{postId}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public void delete(Model model, @PathVariable long postId) {
 		aloneTwitterService.delete(postId);
-		logger.debug("DELETE SUCCEEDED!");
 	}
 
 }
