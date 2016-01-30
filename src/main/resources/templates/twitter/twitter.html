@@ -1,40 +1,50 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet"
-          th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" href="/css/aloneTwitter.css"/>
-    <link rel="stylesheet"
-          href="/lib/bower_components/animate.css/animate.min.css"/>
-    <title>Alone Twitter</title>
+<meta charset="UTF-8" />
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" />
+<link rel="stylesheet" href="/css/aloneTwitter.css" />
+<link rel="stylesheet"
+	href="/lib/bower_components/animate.css/animate.min.css" />
+<title>Alone Twitter</title>
 </head>
 <body>
-<div class="app-title">
-    <h1>Alone Twitter</h1>
-</div>
-<div class="col-md-3">
-    <div class="form-group">
-        <label for="tweet-contents">input here...</label>
-        <textarea class="form-control" id="tweet-contents"></textarea>
-        <span class="pull-left" id="tweet-length-counter">0</span>
+	<div class="app-title">
+		<h1>Alone Twitter</h1>
+	</div>
+	<div class="col-md-3">
+		<input type="text" class="form-control" id="tweet-search-input"
+			placeholder="過去のつぶやきを検索" />
+		<div id="area-tweet-input">
+			<div class="form-group">
+				<label for="tweet-contents">input here...</label>
+				<textarea class="form-control" id="tweet-contents"></textarea>
+				<span class="pull-left" id="tweet-length-counter">0</span>
 
-        <div class="pull-right" id="post-control-buttons">
-            <button class="btn ctn-default" id="delete-post">入力欄をクリア</button>
-            <button class="btn btn-primary" id="execute-post">書き込み</button>
-        </div>
-    </div>
-</div>
-<div class="col-md-8">
-    <div id="post-content-render-block" class="container">
-        <!-- rendered by json -->
-    </div>
-</div>
+				<div class="pull-right" id="post-control-buttons">
+					<button class="btn ctn-default" id="delete-post">入力欄をクリア</button>
+					<button class="btn btn-primary" id="execute-post">書き込み</button>
+				</div>
+			</div>
+		</div>
+		<div>
+			<form method="post" th:action="@{/logout}">
+				<button type="submit" class="btn btn-default pull-left" id="logout-button">ログアウト</button>
+			</form>
+		</div>
+	</div>
+	<div class="col-md-8">
+		<div id="post-content-render-block" class="container">
+			<!-- rendered by json -->
+		</div>
+	</div>
 
-<script th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
-<script
-        src="../lib/bower_components/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js"></script>
-<script th:src="@{/js/twitter.min.js}"></script>
+	<script th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
+	<script
+		src="../lib/bower_components/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js"></script>
+	<script th:src="@{/js/twitter.min.js}"></script>
 </body>
 </html>
