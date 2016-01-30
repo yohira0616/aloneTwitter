@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var scss = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var webpack = require('gulp-webpack');
+var TARGET_PATH = '../../../../target/classes/static/';
 
 gulp.task('default', function () {
     console.log('Hello,gulp!');
@@ -10,7 +11,7 @@ gulp.task('default', function () {
 gulp.task('scss', function () {
     gulp.src('scss/**/*.scss')
         .pipe(scss())
-        .pipe(gulp.dest('css'));
+        .pipe(gulp.dest(TARGET_PATH + 'css'));
 });
 
 gulp.task('scss:watch', function () {
@@ -25,7 +26,7 @@ gulp.task('jscompile', function () {
             }
         }))
         .pipe(uglify())
-        .pipe(gulp.dest('../../../../target/classes/static/js'));
+        .pipe(gulp.dest(TARGET_PATH + 'js'));
 });
 
 gulp.task('jswatch', function () {
