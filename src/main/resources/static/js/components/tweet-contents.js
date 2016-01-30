@@ -12,6 +12,9 @@ var tweetContents = {
     },
     getContentsLength: function () {
         return this.getContents().length;
+    },
+    isLengthOver: function () {
+        return this.getContentsLength() > 140;
     }
 
 };

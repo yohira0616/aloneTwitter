@@ -16,7 +16,17 @@ $(function () {
 
     $('#execute-post').on('click', function () {
         if (tweetContents.isEmpty()) {
-            $.notify('書き込みが入力されていません');
+            $.notify({
+                message: '書き込みが入力されていません',
+                type: 'danger'
+            });
+            return;
+        }
+        if (tweetContents.isLengthOver()) {
+            $.notify({
+                message: '書き込み上限文字数を超えています',
+                type: 'danger'
+            });
             return;
         }
         var tweetInsParam = {
