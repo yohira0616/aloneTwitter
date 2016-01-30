@@ -25,14 +25,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/login/").permitAll().anyRequest()
+		permitPagesConfigure(http);
+		loginConfigure(http);
+		logoutHandleConfigure(http);
+	}
+
+	private void permitPagesConfigure(HttpSecurity http) throws Exception {
+		http.authorizeRequests().antMatchers("/login").permitAll().anyRequest()
 				.authenticated();
+	}
 
-		http.formLogin().loginProcessingUrl("/dologin").loginPage("/login/").failureUrl("/failure/")
+	private void loginConfigure(HttpSecurity http) throws Exception {
+		http.formLogin().loginProcessingUrl("/dologin").loginPage("/login").failureUrl("/failure/")
 				.defaultSuccessUrl("/aloneTwitter/", true).usernameParameter("username").passwordParameter("password");
+	}
 
-		http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout**")).logoutSuccessUrl("/login/");
-
+	private void logoutHandleConfigure(HttpSecurity http) throws Exception {
+		http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout**")).logoutSuccessUrl("/login");
 	}
 
 	@Configuration
