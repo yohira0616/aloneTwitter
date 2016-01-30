@@ -32,3 +32,8 @@ gulp.task('jscompile', function () {
 gulp.task('jswatch', function () {
     gulp.watch('js/**/*.js', ['jscompile']);
 });
+
+gulp.task('allwatch',function(){
+    gulp.watch('scss/**/*.scss', ['scss']);
+    gulp.watch('js/**/*.js', ['jscompile']);
+});
