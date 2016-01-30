@@ -1,6 +1,3 @@
-/**
- * Created by yukito ohira on 2016/01/30.
- */
 var $ = require('jquery');
 var ajaxSender = {
     send: function (obj, url, callbackFunc, dataType) {
