@@ -9,13 +9,13 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
-import jp.ne.yohira.common.JdbcDaoBase;
 import jp.ne.yohira.model.dto.UsersDto;
 
 @Repository
-public class UsersDao extends JdbcDaoBase implements UsersDaoSpec {
+public class UsersDao extends JdbcDaoSupport implements UsersDaoSpec {
 
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
