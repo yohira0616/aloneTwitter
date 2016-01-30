@@ -25,7 +25,7 @@ gulp.task('jscompile', function () {
             }
         }))
         .pipe(uglify())
-        .pipe(gulp.dest('js'));
+        .pipe(gulp.dest('../../../../target/classes/static/js'));
 });
 
 gulp.task('jswatch', function () {
