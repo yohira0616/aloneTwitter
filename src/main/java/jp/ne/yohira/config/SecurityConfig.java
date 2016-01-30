@@ -25,6 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		http.csrf().disable();
 		permitPagesConfigure(http);
 		loginConfigure(http);
 		logoutHandleConfigure(http);
@@ -36,8 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	private void loginConfigure(HttpSecurity http) throws Exception {
-		http.formLogin().loginProcessingUrl("/dologin").loginPage("/login").failureUrl("/failure/")
-				.defaultSuccessUrl("/aloneTwitter/", true).usernameParameter("username").passwordParameter("password");
+		http.formLogin().loginProcessingUrl("/dologin").loginPage("/login").failureUrl("/login?error")
+				.defaultSuccessUrl("/alonetwitter/", true).usernameParameter("username").passwordParameter("password");
 	}
 
 	private void logoutHandleConfigure(HttpSecurity http) throws Exception {
