@@ -2,6 +2,8 @@ package jp.ne.yohira.model.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import jp.ne.yohira.common.CassandraDaoBase;
 import jp.ne.yohira.model.dto.TweetDto;
 
@@ -9,7 +11,7 @@ import jp.ne.yohira.model.dto.TweetDto;
  * Cassanra用のDao
  *
  */
-//@Repository
+@Repository
 public class TweetDaoCassandra extends CassandraDaoBase implements TweetDaoSpec {
 
 	@Override
