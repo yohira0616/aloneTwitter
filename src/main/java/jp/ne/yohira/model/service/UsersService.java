@@ -1,5 +1,7 @@
 package jp.ne.yohira.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,11 @@ public class UsersService implements UsersServiceSpec {
 	@Override
 	public void create(UsersDto user) {
 		dao.createUser(user);
+	}
+
+	@Override
+	public List<UsersDto> getAllUser() {
+		return dao.fetchAllUsers();
 	}
 
 }

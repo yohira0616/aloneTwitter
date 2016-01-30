@@ -1,5 +1,7 @@
 package jp.ne.yohira.controller.alone.twitter.user;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,6 +24,11 @@ public class UsersController {
 	@ResponseStatus(HttpStatus.OK)
 	public void createUser(@RequestBody UsersDto user) {
 		usersService.create(user);
+	}
+
+	@RequestMapping("/userlist")
+	public List<UsersDto> getUsers() {
+		return usersService.getAllUser();
 	}
 
 }

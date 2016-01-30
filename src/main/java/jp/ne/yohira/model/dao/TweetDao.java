@@ -22,7 +22,7 @@ public class TweetDao extends JdbcDaoSupport implements TweetDaoSpec {
 
 	private static final String SELECT_SQL = "SELECT post_id,contents,prc_date FROM tweet ORDER BY PRC_DATE DESC";
 
-	private static final String DELETE_SQL = "DELETE FROM tweet WHERE post_id = ?";
+	private static final String DELETE_SQL = "DELETE FROM tweet WHERE post_id = :post_id";
 
 	private static final String INSERT_SQL = "INSERT INTO tweet(post_id,contents,prc_date) VALUES (:post_id,:contents,current_timestamp)";
 
