@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" />
+<link rel="stylesheet"
+	href="/lib/bower_components/animate.css/animate.min.css" />
 <title>Login</title>
 </head>
 <body>
-login
+	<div class="container">
+	<h2 class="form-signin-heading">ログイン</h2>
+		<form method="post" th:action="@{/dologin}" class="fotm-signin">
+			<input type="text" placeholder="username" required="required"
+				name="username" class="form-control"/>
+				 <input type="password" placeholder="password"
+				required="required" name="password" class="form-control"/>
+			<button type="submit" class="btn btn-primary">ログイン</button>
+		</form>
+	</div>
+	<script th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
+	<script
+		src="../lib/bower_components/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js"></script>
 </body>
+
 </html>
