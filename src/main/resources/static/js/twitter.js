@@ -29,10 +29,7 @@ $(function () {
             });
             return;
         }
-        var tweetInsParam = {
-            contents: tweetContents.getContents()
-        };
-        ajaxSender.send(tweetInsParam, hostUrl + '/alonetwitter/create', function () {
+        ajaxSender.send(tweetContents.getContents(), hostUrl + '/alonetwitter/create', function () {
             $('#post-content-render-block').empty();
             loadPosts();
             tweetInputClear();
@@ -50,10 +47,10 @@ $(function () {
     });
 
     $('#tweet-contents').on('keyup', function () {
-        var textLength = tweetContents.getContentsLength();
-        tweetLengthCounter.updateLength(textLength);
+        tweetLengthCounter.updateLength(tweetContents.getContentsLength());
     });
 
+    //TODO XSS Handle
     function makePostElement(data) {
         var html = '';
         html += '<div class="panel panel-default" data-postid="' + data.postId + '">';

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import jp.ne.yohira.model.dao.TweetDaoSpec;
 import jp.ne.yohira.model.dto.TweetDto;
-import jp.ne.yohira.model.param.TweetInsParam;
 
 @Service
 public class AloneTwitterService implements AloneTwitterServiceSpec {
@@ -26,10 +25,10 @@ public class AloneTwitterService implements AloneTwitterServiceSpec {
 	}
 
 	@Override
-	public void insert(TweetInsParam param) {
+	public void insert(String contents) {
 		TweetDto dto = new TweetDto();
 		dto.setPostId(tweetDao.getNewPostId());
-		dto.setContents(param.getContents());
+		dto.setContents(contents);
 		tweetDao.createTweet(dto);
 	}
 
