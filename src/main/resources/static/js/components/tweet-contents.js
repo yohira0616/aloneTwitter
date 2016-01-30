@@ -7,7 +7,7 @@ var tweetContents = {
     getContents: function () {
         return $('#tweet-contents').val();
     },
-    isEmpty: function () {
+    isEmpty: function() {
         return this.getContents() === '';
     },
     getContentsLength: function () {

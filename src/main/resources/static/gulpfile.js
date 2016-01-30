@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var scss = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var webpack = require('gulp-webpack');
+var babel=require('gulp-babel');
 var TARGET_PATH = '../../../../target/classes/static/';
 
 gulp.task('default', function () {
@@ -25,6 +26,7 @@ gulp.task('jscompile', function () {
                 filename: 'twitter.min.js'
             }
         }))
+        .pipe(babel())
         .pipe(uglify())
         .pipe(gulp.dest(TARGET_PATH + 'js'));
 });

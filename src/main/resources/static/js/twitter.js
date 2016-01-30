@@ -5,8 +5,9 @@ var ajaxSender = require('./util/ajax-sender');
 var tweetLengthCounter = require('./components/tweet-length-counter');
 
 $(function () {
+    "use strict";
 
-    var hostUrl = 'http://localhost:1243';
+    const hostUrl = 'http://localhost:1243';
     loadPosts();
 
 
@@ -38,8 +39,8 @@ $(function () {
     });
 
     $('body').on('click', 'a.post-delete', function () {
-        var $this = $(this);
-        var postId = $this.parents('.panel.panel-default').attr('data-postId');
+        const $this = $(this);
+        const postId = $this.parents('.panel.panel-default').attr('data-postId');
         ajaxSender.touch(hostUrl + '/alonetwitter/delete/' + postId, function () {
             $this.parents('.panel.panel-default').remove();
             $.notify('削除しました');
@@ -70,7 +71,7 @@ $(function () {
 
     function loadPosts() {
         ajaxSender.touch(hostUrl + '/alonetwitter/getTweets', function (data) {
-            var $target = $('#post-content-render-block');
+            const $target = $('#post-content-render-block');
             $.each(data, function () {
                 var createdHtml = makePostElement(this);
                 $target.append(createdHtml);
