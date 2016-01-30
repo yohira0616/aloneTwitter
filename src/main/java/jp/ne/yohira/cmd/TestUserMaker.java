@@ -1,9 +1,13 @@
 package jp.ne.yohira.cmd;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import com.google.common.collect.Lists;
 
 import jp.ne.yohira.model.dao.UsersDaoSpec;
 import jp.ne.yohira.model.dto.UsersDto;
@@ -19,10 +23,17 @@ public class TestUserMaker implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		UsersDto testuser = new UsersDto();
-		testuser.setUserId("testuser");
-		testuser.setPasswd(encoder.encode("test"));
-		dao.createUser(testuser);
+		makeDummyUser().stream().forEach((user) -> {
+			dao.createUser(user);
+		});
+	}
+
+	private List<UsersDto> makeDummyUser() {
+		List<UsersDto> users = Lists.newArrayList();
+		users.add(new UsersDto("testuser", encoder.encode("test")));
+		users.add(new UsersDto("admin", encoder.encode("admin")));
+		users.add(new UsersDto("user1", encoder.encode("user1")));
+		return users;
 	}
 
 }
