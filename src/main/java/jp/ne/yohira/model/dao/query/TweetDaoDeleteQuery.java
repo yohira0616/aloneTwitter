@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.object.SqlUpdate;
 
+@Deprecated
 public class TweetDaoDeleteQuery extends SqlUpdate {
 
 	private static final String DELETE_SQL = "DELETE FROM tweet WHERE post_id = ?";

@@ -9,6 +9,7 @@ import org.springframework.jdbc.object.SqlUpdate;
 
 import jp.ne.yohira.model.dto.TweetDto;
 
+@Deprecated
 public class TweetDaoInsertQuery extends SqlUpdate {
 
 	private static final String INSERT_SQL = "INSERT INTO tweet(post_id,contents,prc_date) VALUES (?,?,current_timestamp)";
