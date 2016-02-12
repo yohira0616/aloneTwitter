@@ -2,12 +2,9 @@ var gulp = require('gulp');
 var scss = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var webpack = require('gulp-webpack');
-var babel=require('gulp-babel');
+var babel = require('gulp-babel');
 var TARGET_PATH = '../../../../target/classes/static/';
-
-gulp.task('default', function () {
-    console.log('Hello,gulp!');
-});
+var THYMELEAF_PATH = '../../../../target/classes/templates/';
 
 gulp.task('scss', function () {
     gulp.src('scss/**/*.scss')
@@ -31,11 +28,23 @@ gulp.task('jscompile', function () {
         .pipe(gulp.dest(TARGET_PATH + 'js'));
 });
 
+gulp.task('thymeleaf', function () {
+    gulp.src('../templates/**/*.html')
+        .pipe(gulp.dest(THYMELEAF_PATH));
+});
+
+gulp.task('img', function () {
+    gulp.src('img/**/*')
+        .pipe(gulp.dest(TARGET_PATH + "img"));
+});
+
 gulp.task('jswatch', function () {
     gulp.watch('js/**/*.js', ['jscompile']);
 });
 
-gulp.task('allwatch',function(){
+gulp.task('allwatch', function () {
     gulp.watch('scss/**/*.scss', ['scss']);
     gulp.watch('js/**/*.js', ['jscompile']);
+    gulp.watch('img/**/*', ['img']);
+    gulp.watch('../templates/**/*.html', ['thymeleaf']);
 });
