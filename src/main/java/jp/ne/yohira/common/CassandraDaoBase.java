@@ -1,5 +1,7 @@
 package jp.ne.yohira.common;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.datastax.driver.core.Session;
 
 /**
@@ -8,7 +10,7 @@ import com.datastax.driver.core.Session;
  */
 public abstract class CassandraDaoBase {
 
-	//@Autowired
+	@Autowired
 	protected Session session;
 
 }
