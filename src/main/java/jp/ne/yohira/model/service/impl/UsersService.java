@@ -25,4 +25,9 @@ public class UsersService implements UsersServiceSpec {
 		return dao.fetchAllUsers();
 	}
 
+	@Override
+	public void delete(String userId) {
+		dao.delete(userId);
+	}
+
 }

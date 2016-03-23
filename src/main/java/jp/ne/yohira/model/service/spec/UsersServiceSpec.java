@@ -10,4 +10,6 @@ public interface UsersServiceSpec {
 
 	public List<UsersDto> getAllUser();
 
+	public void delete(String userId);
+
 }
