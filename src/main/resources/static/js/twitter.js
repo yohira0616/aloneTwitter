@@ -1,92 +1,96 @@
-var $ = require('jquery');
-var notify = require('bootstrap-notify');
-var tweetContents = require('./components/tweet-contents');
-var ajaxSender = require('./util/ajax-sender');
-var tweetLengthCounter = require('./components/tweet-length-counter');
-//
+"use strict";
+const $ = require('jquery');
 
-$(function () {
-    "use strict";
+(function ($) {
 
-    const hostUrl = 'http://localhost:1243';
-    loadPosts();
+    const notify = require('bootstrap-notify');
+    const tweetContents = require('./components/tweet-contents');
+    const ajaxSender = require('./util/ajax-sender');
+    const tweetLengthCounter = require('./components/tweet-length-counter');
+    const MSG = require('./config/messages');
+    $(function() {
+        const config = require('./config/app-config');
 
+        loadPosts();
 
-    $('#delete-post').on('click', function () {
-        tweetInputClear();
-    });
-
-    $('#execute-post').on('click', function () {
-        if (tweetContents.isEmpty()) {
-            $.notify({
-                message: '書き込みが入力されていません',
-                type: 'danger'
-            });
-            return;
-        }
-        if (tweetContents.isLengthOver()) {
-            $.notify({
-                message: '書き込み上限文字数を超えています',
-                type: 'danger'
-            });
-            return;
-        }
-        var param={
-            contents:tweetContents.getContents()
-        };
-        ajaxSender.send(param, hostUrl + '/alonetwitter/create', function () {
-            $('#post-content-render-block').empty();
-            loadPosts();
+        $('#delete-post').on('click',  ()=> {
             tweetInputClear();
-            $.notify('書き込みました！');
-        }, 'html');
-
-    });
-
-    $('body').on('click', 'a.post-delete', function () {
-        const $this = $(this);
-        const postId = $this.parents('.panel.panel-default').attr('data-postId');
-        ajaxSender.touch(hostUrl + '/alonetwitter/delete/' + postId, function () {
-            $this.parents('.panel.panel-default').remove();
-            $.notify('削除しました');
-        }, 'html');
-    });
-
-    $('#tweet-contents').on('keyup', function () {
-        tweetLengthCounter.updateLength(tweetContents.getContentsLength());
-    });
-
-    //TODO XSS Handle
-    function makePostElement(data) {
-        var html = '';
-        html += '<div class="panel panel-default" data-postid="' + data.postId + '">';
-        html += '<div class="panel-body">';
-        html += '<div class="post-contents">';
-        html += data.contents;
-        html += '</div>';
-        html += '</div>';
-        html += '<div class="panel-footer">';
-        html += '<span class="post-date">';
-        html += data.prcDate;
-        html += '</span>';
-        html += '<a href="#" class="post-delete"><i class="glyphicon glyphicon-trash pull-right"> </i></a>';
-        html += '</div></div>';
-        return html;
-    }
-
-    function loadPosts() {
-        ajaxSender.touch(hostUrl + '/alonetwitter/getTweets', function (data) {
-            const $target = $('#post-content-render-block');
-            $.each(data, function () {
-                var createdHtml = makePostElement(this);
-                $target.append(createdHtml);
-            });
         });
-    }
+        $('#execute-post').on('click',  ()=> {
+            if (tweetContents.isEmpty()) {
+                $.notify({
+                    message: MSG["error.empty"],
+                    type: 'danger'
+                });
+                return;
+            }
+            if (tweetContents.isLengthOver()) {
+                $.notify({
+                    message: MSG["error.overlength"],
+                    type: 'danger'
+                });
+                return;
+            }
+            var param = {
+                contents: tweetContents.getContents()
+            };
+            ajaxSender.send(param, config.server + '/alonetwitter/create', () => {
+                $('#post-content-render-block').empty();
+                loadPosts();
+                tweetInputClear();
+                $.notify(MSG["info.save"]);
+            }, 'html');
 
-    function tweetInputClear() {
-        tweetContents.emptyContents();
-        tweetLengthCounter.updateLength(0);
-    }
+        });
 
-});
+        $('body').on('click', 'a.post-delete', function () {
+            const $this = $(this);
+            const postId = $this.parents('.panel.panel-default').attr('data-postId');
+            ajaxSender.touch(config.server + '/alonetwitter/delete/' + postId, () => {
+                $this.parents('.panel.panel-default').remove();
+                $.notify(MSG["info.delete"]);
+            }, 'html');
+        });
+
+        $('#tweet-contents').on('keyup', () => {
+            tweetLengthCounter.updateLength(tweetContents.getContentsLength());
+        });
+
+        //TODO XSS Handle
+        function makePostElement(data) {
+            var html = '';
+            html += '<div class="panel panel-default" data-postid="' + data.postId + '">';
+            html += '<div class="panel-body">';
+            html += '<div class="post-contents">';
+            html += data.contents;
+            html += '</div>';
+            html += '</div>';
+            html += '<div class="panel-footer">';
+            html += '<span class="post-date">';
+            html += data.prcDate;
+            html += '</span>';
+            html += '<a href="#" class="post-delete"><i class="glyphicon glyphicon-trash pull-right"> </i></a>';
+            html += '</div></div>';
+            return html;
+        }
+
+        function loadPosts() {
+            ajaxSender.touch(config.server + '/alonetwitter/getTweets', function (data) {
+                const $target = $('#post-content-render-block');
+                $.each(data, function () {
+                    var createdHtml = makePostElement(this);
+                    $target.append(createdHtml);
+                });
+            });
+        }
+
+        function tweetInputClear() {
+            tweetContents.emptyContents();
+            tweetLengthCounter.updateLength(0);
+        }
+
+    });
+
+
+})($);
+
