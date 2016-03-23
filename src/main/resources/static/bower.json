@@ -1,0 +1,22 @@
+{
+  "name": "alone-twitter",
+  "description": "sample-application",
+  "main": "index.js",
+  "authors": [
+    "yohira"
+  ],
+  "license": "BSD-2-Clause",
+  "homepage": "https://github.com/yohira0616/aloneTwitter",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "animate.css": "^3.5.1",
+    "remarkable-bootstrap-notify": "^3.1.3"
+  }
+}

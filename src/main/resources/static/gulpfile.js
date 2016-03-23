@@ -14,6 +14,7 @@ var scssCompile = 'stylesheet';
 var jsCompile = 'javascript';
 var htmlCopy = 'thymeleaf';
 var imgCopy = 'img';
+var bower = 'bower';
 
 gulp.task(scssCompile, function () {
     gulp.src('scss/**/*.scss')
@@ -54,4 +55,9 @@ gulp.task('watch', function () {
     gulp.watch('js/**/*.js', [jsCompile]);
     gulp.watch('img/**/*', [imgCopy]);
     gulp.watch('../templates/**/*.html', [htmlCopy]);
+});
+
+gulp.task(bower, function () {
+    gulp.src('lib/**/*')
+        .pipe(gulp.dest(TARGET_PATH + "lib"));
 });

@@ -1,4 +1,0 @@
-dependency
- jQuery,Bootstrap,remarkable-bootstrap-notify
-
-TODO bowerrc decsribe?
