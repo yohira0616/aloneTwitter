@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>aloneTwitter</groupId>
-	<artifactId>application</artifactId>
+	<artifactId>aloneTwitter</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
@@ -34,22 +34,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-
-		<!-- cassandra -->
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-cassandra</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.datastax.cassandra</groupId>
-			<artifactId>cassandra-driver-core</artifactId>
-			<version>2.1.9</version>
-		</dependency>
-		<dependency>
-			<groupId>com.datastax.cassandra</groupId>
-			<artifactId>cassandra-driver-mapping</artifactId>
-			<version>2.1.9</version>
 		</dependency>
 
 
@@ -102,25 +86,6 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
-		<!-- TESTING FRAMEWORK -->
-		<dependency>
-			<groupId>org.fluentlenium</groupId>
-			<artifactId>fluentlenium-core</artifactId>
-			<version>0.10.9</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.fluentlenium</groupId>
-			<artifactId>fluentlenium-assertj</artifactId>
-			<version>0.10.9</version>
-			<scope>test</scope>
-		</dependency>
-		<!--  <dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>2.52.0</version>
-			<scope>test</scope>
-		</dependency> -->
 	</dependencies>
 
 	<build>
