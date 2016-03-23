@@ -1,4 +1,4 @@
-package jp.ne.yohira.model.service;
+package jp.ne.yohira.model.service.spec;
 
 import java.util.List;
 

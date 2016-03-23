@@ -1,4 +1,4 @@
-package jp.ne.yohira.model.service.auth;
+package jp.ne.yohira.model.service.impl.auth;
 
 import java.util.Objects;
 
@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import jp.ne.yohira.model.auth.UsersDetails;
-import jp.ne.yohira.model.dao.UsersDaoSpec;
+import jp.ne.yohira.model.dao.spec.UsersDaoSpec;
 import jp.ne.yohira.model.dto.UsersDto;
 
 @Service

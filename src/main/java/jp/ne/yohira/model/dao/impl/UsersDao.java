@@ -1,4 +1,4 @@
-package jp.ne.yohira.model.dao;
+package jp.ne.yohira.model.dao.impl;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import jp.ne.yohira.model.dao.spec.UsersDaoSpec;
 import jp.ne.yohira.model.dto.UsersDto;
 
 @Repository

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import jp.ne.yohira.model.dto.UsersDto;
-import jp.ne.yohira.model.service.UsersServiceSpec;
+import jp.ne.yohira.model.service.spec.UsersServiceSpec;
 
 @RequestMapping("/user")
 @RestController

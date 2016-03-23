@@ -1,5 +1,7 @@
-package jp.ne.yohira.model.dao;
+package jp.ne.yohira.model.dao.impl;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -10,9 +12,10 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.jdbc.object.MappingSqlQuery;
 import org.springframework.stereotype.Repository;
 
-import jp.ne.yohira.model.dao.query.TweetDaoPostIdSeq;
+import jp.ne.yohira.model.dao.spec.TweetDaoSpec;
 import jp.ne.yohira.model.dto.TweetDto;
 
 @Repository
@@ -65,4 +68,23 @@ public class TweetDao extends JdbcDaoSupport implements TweetDaoSpec {
 		return seqQuery.execute().get(0).longValue();
 	}
 
+	/**
+	 * シーケンスを取得する内部クラス
+	 * 
+	 * @author yohira
+	 *
+	 */
+	private static class TweetDaoPostIdSeq extends MappingSqlQuery<Long> {
+
+		private static final String SEQ_SQL = "SELECT nextval('tweet_post_id_seq')";
+
+		public TweetDaoPostIdSeq(DataSource ds) {
+			super(ds, SEQ_SQL);
+		}
+
+		@Override
+		protected Long mapRow(ResultSet rs, int rowNum) throws SQLException {
+			return rs.getLong(1);
+		}
+	}
 }

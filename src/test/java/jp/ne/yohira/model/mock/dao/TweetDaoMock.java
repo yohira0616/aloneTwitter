@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 
-import jp.ne.yohira.model.dao.TweetDaoSpec;
+import jp.ne.yohira.model.dao.spec.TweetDaoSpec;
 import jp.ne.yohira.model.dto.TweetDto;
 
 public class TweetDaoMock implements TweetDaoSpec {

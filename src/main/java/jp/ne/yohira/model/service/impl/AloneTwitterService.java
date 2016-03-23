@@ -1,12 +1,13 @@
-package jp.ne.yohira.model.service;
+package jp.ne.yohira.model.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jp.ne.yohira.model.dao.TweetDaoSpec;
+import jp.ne.yohira.model.dao.spec.TweetDaoSpec;
 import jp.ne.yohira.model.dto.TweetDto;
+import jp.ne.yohira.model.service.spec.AloneTwitterServiceSpec;
 
 @Service
 public class AloneTwitterService implements AloneTwitterServiceSpec {

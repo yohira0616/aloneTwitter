@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import jp.ne.yohira.model.dto.TweetDto;
 import jp.ne.yohira.model.request.param.TweetContents;
-import jp.ne.yohira.model.service.AloneTwitterServiceSpec;
+import jp.ne.yohira.model.service.spec.AloneTwitterServiceSpec;
 
 @RequestMapping("/alonetwitter")
 @Controller

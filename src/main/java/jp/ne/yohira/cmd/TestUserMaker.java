@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import com.google.common.collect.Lists;
 
-import jp.ne.yohira.model.dao.UsersDaoSpec;
+import jp.ne.yohira.model.dao.spec.UsersDaoSpec;
 import jp.ne.yohira.model.dto.UsersDto;
 
 @Component

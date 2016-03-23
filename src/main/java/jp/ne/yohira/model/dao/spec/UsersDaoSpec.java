@@ -1,4 +1,4 @@
-package jp.ne.yohira.model.dao;
+package jp.ne.yohira.model.dao.spec;
 
 import java.util.List;
 
