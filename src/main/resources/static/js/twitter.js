@@ -2,21 +2,21 @@
 const $ = require('jquery');
 
 (function ($) {
-
     const notify = require('bootstrap-notify');
     const tweetContents = require('./components/tweet-contents');
     const ajaxSender = require('./util/ajax-sender');
     const tweetLengthCounter = require('./components/tweet-length-counter');
     const MSG = require('./config/messages');
-    $(function() {
+    const twitterService = require('./service/twitter-service');
+    $(function () {
         const config = require('./config/app-config');
 
         loadPosts();
 
-        $('#delete-post').on('click',  ()=> {
-            tweetInputClear();
+        $('#delete-post').on('click', ()=> {
+            twitterService.tweetInputClear();
         });
-        $('#execute-post').on('click',  ()=> {
+        $('#execute-post').on('click', ()=> {
             if (tweetContents.isEmpty()) {
                 $.notify({
                     message: MSG["error.empty"],
@@ -37,7 +37,7 @@ const $ = require('jquery');
             ajaxSender.send(param, config.server + '/alonetwitter/create', () => {
                 $('#post-content-render-block').empty();
                 loadPosts();
-                tweetInputClear();
+                twitterService.tweetInputClear();
                 $.notify(MSG["info.save"]);
             }, 'html');
 
@@ -82,11 +82,6 @@ const $ = require('jquery');
                     $target.append(createdHtml);
                 });
             });
-        }
-
-        function tweetInputClear() {
-            tweetContents.emptyContents();
-            tweetLengthCounter.updateLength(0);
         }
 
     });
