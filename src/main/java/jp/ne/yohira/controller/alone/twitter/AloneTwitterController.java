@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import jp.ne.yohira.model.dto.TweetDto;
+import jp.ne.yohira.model.request.param.TweetContents;
 import jp.ne.yohira.model.service.AloneTwitterServiceSpec;
 
 @RequestMapping("/alonetwitter")
@@ -37,8 +38,8 @@ public class AloneTwitterController {
 
 	@RequestMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
-	public void create(Model model, @RequestBody String tweetContents) {
-		aloneTwitterService.insert(tweetContents);
+	public void create(Model model, @RequestBody TweetContents tweetContents) {
+		aloneTwitterService.insert(tweetContents.getContents());
 	}
 
 	@RequestMapping(value = "/delete/{postId}", consumes = MediaType.APPLICATION_JSON_VALUE)

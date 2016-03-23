@@ -35,7 +35,7 @@ gulp.task(jsCompile, function () {
         .pipe(babel())
         .pipe(uglify())
         .pipe(gulp.dest(TARGET_PATH + 'js'))
-        .pipe(gulp.dest('js'));
+        .pipe(gulp.dest('dist'));
 });
 
 gulp.task(htmlCopy, function () {
@@ -55,6 +55,7 @@ gulp.task('watch', function () {
     gulp.watch('js/**/*.js', [jsCompile]);
     gulp.watch('img/**/*', [imgCopy]);
     gulp.watch('../templates/**/*.html', [htmlCopy]);
+    gulp.watch('lib/**/*',[bower]);
 });
 
 gulp.task(bower, function () {

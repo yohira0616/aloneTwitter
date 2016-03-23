@@ -55,13 +55,14 @@ public class TweetDao extends JdbcDaoSupport implements TweetDaoSpec {
 	public void createTweet(TweetDto dto) {
 		SqlParameterSource param = new MapSqlParameterSource().addValue("post_id", dto.getPostId()).addValue("contents",
 				dto.getContents());
+		System.out.println(dto.getContents());
 		jdbcTemplate.update(INSERT_SQL, param);
 	}
 
 	@Override
 	public long getNewPostId() {
-		List<Long> postIds = new TweetDaoPostIdSeq(getDataSource()).execute();
-		return postIds.isEmpty() ? 0L : postIds.get(0) + 1;
+		TweetDaoPostIdSeq seqQuery = new TweetDaoPostIdSeq(getDataSource());
+		return seqQuery.execute().get(0).longValue();
 	}
 
 }

@@ -3,6 +3,7 @@ var notify = require('bootstrap-notify');
 var tweetContents = require('./components/tweet-contents');
 var ajaxSender = require('./util/ajax-sender');
 var tweetLengthCounter = require('./components/tweet-length-counter');
+//
 
 $(function () {
     "use strict";
@@ -30,12 +31,16 @@ $(function () {
             });
             return;
         }
-        ajaxSender.send(tweetContents.getContents(), hostUrl + '/alonetwitter/create', function () {
+        var param={
+            contents:tweetContents.getContents()
+        };
+        ajaxSender.send(param, hostUrl + '/alonetwitter/create', function () {
             $('#post-content-render-block').empty();
             loadPosts();
             tweetInputClear();
             $.notify('書き込みました！');
         }, 'html');
+
     });
 
     $('body').on('click', 'a.post-delete', function () {

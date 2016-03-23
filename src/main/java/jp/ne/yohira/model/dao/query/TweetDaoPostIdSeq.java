@@ -7,13 +7,12 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.object.MappingSqlQuery;
 
-//FIXME ありえないシーケンスの取り方
 public class TweetDaoPostIdSeq extends MappingSqlQuery<Long> {
 
-	private static final String getSeqSql = "SELECT post_id FROM tweet order by post_id desc";
+	private static final String SEQ_SQL = "SELECT nextval('tweet_post_id_seq')";
 
 	public TweetDaoPostIdSeq(DataSource ds) {
-		super(ds, getSeqSql);
+		super(ds, SEQ_SQL);
 	}
 
 	@Override
