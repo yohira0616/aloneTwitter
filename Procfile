@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar -target/*.jar --server.port= $PORT
+web: java -Dserver.port=$PORT -jar target/aloneTwitter-0.0.1-SNAPSHOT.war
