@@ -19,7 +19,9 @@ var bower = 'bower';
 gulp.task(scssCompile, function () {
     gulp.src('scss/**/*.scss')
         .pipe(plumber())
-        .pipe(scss())
+        .pipe(scss({
+            outputStyle:'compressed'
+        }))
         .pipe(gulp.dest(TARGET_PATH + 'css'))
         .pipe(gulp.dest('css'));
 });
@@ -34,7 +36,7 @@ gulp.task(jsCompile, function () {
         }))
         .pipe(babel())
         .pipe(uglify())
-        .pipe(gulp.dest(TARGET_PATH + 'js'))
+        .pipe(gulp.dest(TARGET_PATH + 'dist'))
         .pipe(gulp.dest('dist'));
 });
 

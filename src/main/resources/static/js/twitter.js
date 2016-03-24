@@ -10,7 +10,6 @@ const $ = require('jquery');
     const twitterService = require('./service/twitter-service');
     $(function () {
         const config = require('./config/app-config');
-
         loadPosts();
 
         $('#delete-post').on('click', ()=> {
@@ -83,9 +82,6 @@ const $ = require('jquery');
                 });
             });
         }
-
     });
-
-
 })($);
 

@@ -1,13 +1,1 @@
-#post-control-buttons {
-  padding-top: 10px;
-  padding-bottom: 20px; }
-
-.text-input-over {
-  color: red; }
-
-.app-left-panel {
-  min-height: 100%;
-  border-right: 1px solid gray; }
-
-#area-tweet-input {
-  margin: 5px; }
+#post-control-buttons{padding-top:10px;padding-bottom:20px}.text-input-over{color:red}.app-left-panel{min-height:100%;border-right:1px solid gray}#area-tweet-input{margin:5px}
