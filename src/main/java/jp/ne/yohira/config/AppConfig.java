@@ -21,7 +21,7 @@ public class AppConfig {
 	DataSource ds;
 
 	@Bean(destroyMethod = "close")
-	public DataSource realDataSource() throws URISyntaxException {
+	public DataSource dataSource() throws URISyntaxException {
 		String url;
 		String username;
 		String password;
