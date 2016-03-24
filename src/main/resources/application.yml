@@ -1,0 +1,34 @@
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: dev
+  thymeleaf:
+    cache: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/alone_twitter
+    username: postgres
+    password: pass
+    driver-class-name: org.postgresql.Driver
+
+server:
+  port: 1243  
+
+security:
+  basic:
+    enabled: false
+
+logging:
+  file: logs/alonetwitter.log
+
+---
+spring:
+  profiles: heroku
+  datasource:
+    driver-class-name: org.postgresql.Driver
+
+security:
+  basic:
+    enabled: false
