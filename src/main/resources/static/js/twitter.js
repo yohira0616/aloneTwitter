@@ -12,11 +12,11 @@ const $ = require('jquery');
         const config = require('./config/app-config');
         loadPosts();
 
-        $('#delete-post').on('click', function () {
+        $('#delete-post').on('click', ()=> {
             twitterService.tweetInputClear();
         });
 
-        $('#execute-post').on('click', function () {
+        $('#execute-post').on('click', ()=> {
             if (tweetContents.isEmpty()) {
                 $.notify({
                     message: MSG["error.empty"],
@@ -46,13 +46,13 @@ const $ = require('jquery');
         $('body').on('click', 'a.post-delete', function () {
             const $this = $(this);
             const postId = $this.parents('.panel.panel-default').attr('data-postId');
-            ajaxSender.touch(config.server + '/alonetwitter/delete/' + postId, function() {
+            ajaxSender.touch(config.server + '/alonetwitter/delete/' + postId, function () {
                 $this.parents('.panel.panel-default').remove();
                 $.notify(MSG["info.delete"]);
             }, 'html');
         });
 
-        $('#tweet-contents').on('keyup', function () {
+        $('#tweet-contents').on('keyup', ()=> {
             tweetLengthCounter.updateLength(tweetContents.getContentsLength());
         });
 
