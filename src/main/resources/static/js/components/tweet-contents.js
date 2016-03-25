@@ -1,33 +1,22 @@
 "use strict";
 const $ = require('jquery');
-const TWEET_MAX_LENGTH = 140;
-class TweetContents {
+var TweetContents = {
 
-    constructor() {
-        this.$elem = $('#tweet-contents');
-    };
-
-    emptyContents() {
-        this.$elem.val('');
-    }
-
-    getContents() {
-        return this.$elem.val();
-    }
-
-    isEmpty() {
+    emptyContents: function () {
+        $('#tweet-contents').val('');
+    },
+    getContents: function () {
+        return $('#tweet-contents').val();
+    },
+    isEmpty: function () {
         return this.getContents() === '';
-    }
-
-    getContentsLength() {
+    },
+    getContentsLength: function () {
         return this.getContents().length;
+    },
+    isLengthOver: function () {
+        return this.getContentsLength() > 140;
     }
-
-    isLengthOver() {
-        return this.getContentsLength() > TWEET_MAX_LENGTH;
-    }
-
-
-}
+};
 
 module.exports = TweetContents;

@@ -12,10 +12,11 @@ const $ = require('jquery');
         const config = require('./config/app-config');
         loadPosts();
 
-        $('#delete-post').on('click', ()=> {
+        $('#delete-post').on('click', function () {
             twitterService.tweetInputClear();
         });
-        $('#execute-post').on('click', ()=> {
+
+        $('#execute-post').on('click', function () {
             if (tweetContents.isEmpty()) {
                 $.notify({
                     message: MSG["error.empty"],
@@ -33,7 +34,7 @@ const $ = require('jquery');
             var param = {
                 contents: tweetContents.getContents()
             };
-            ajaxSender.send(param, config.server + '/alonetwitter/create', () => {
+            ajaxSender.send(param, config.server + '/alonetwitter/create', function () {
                 $('#post-content-render-block').empty();
                 loadPosts();
                 twitterService.tweetInputClear();
@@ -45,13 +46,13 @@ const $ = require('jquery');
         $('body').on('click', 'a.post-delete', function () {
             const $this = $(this);
             const postId = $this.parents('.panel.panel-default').attr('data-postId');
-            ajaxSender.touch(config.server + '/alonetwitter/delete/' + postId, () => {
+            ajaxSender.touch(config.server + '/alonetwitter/delete/' + postId, function() {
                 $this.parents('.panel.panel-default').remove();
                 $.notify(MSG["info.delete"]);
             }, 'html');
         });
 
-        $('#tweet-contents').on('keyup', () => {
+        $('#tweet-contents').on('keyup', function () {
             tweetLengthCounter.updateLength(tweetContents.getContentsLength());
         });
 

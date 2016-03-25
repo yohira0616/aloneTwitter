@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var scss = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var webpack = require('gulp-webpack');
+var wp=require('webpack');
 var babel = require('gulp-babel');
 var plumber = require('gulp-plumber');
 
@@ -32,8 +33,9 @@ gulp.task(jsCompile, function () {
         .pipe(webpack({
             output: {
                 filename: 'twitter.min.js'
-            }
-        }))
+            },
+            plugins:[new wp.optimize.UglifyJsPlugin()]
+        },wp))
         .pipe(babel())
         .pipe(uglify())
         .pipe(gulp.dest(TARGET_PATH + 'dist'))
