@@ -51,7 +51,7 @@ gulp.task(imgCopy, function () {
         .pipe(gulp.dest(TARGET_PATH + "img"));
 });
 
-gulp.task('default', [scssCompile, jsCompile, htmlCopy, imgCopy]);
+gulp.task('default', [scssCompile, jsCompile, htmlCopy, imgCopy, bower]);
 
 gulp.task('watch', function () {
     gulp.watch('scss/**/*.scss', [scssCompile]);
@@ -62,6 +62,7 @@ gulp.task('watch', function () {
 });
 
 gulp.task(bower, function () {
-    gulp.src('lib/**/*')
-        .pipe(gulp.dest(TARGET_PATH + "lib"));
+    gulp.src('bower_components/**/*.min.{js,css}')
+        .pipe(gulp.dest('./dist/lib'))
+        .pipe(gulp.dest(TARGET_PATH + "dist/lib"));
 });
