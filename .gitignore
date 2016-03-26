@@ -9,3 +9,4 @@ src/main/resources/static/node_modules/
 src/main/java/jp/ne/yohira/controller/BookController.java
 .classpath
 logs
+.vagrant
