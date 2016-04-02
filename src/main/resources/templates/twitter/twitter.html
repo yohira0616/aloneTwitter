@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet"
-          th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"/>
+          th:href="@{/dist/lib/bootstrap/dist/css/bootstrap.min.css}"/>
+    <link rel="stylesheet"
+          th:href="@{/webjars/x-editable-bootstrap/1.5.1/css/bootstrap-editable.css}"/>
     <link rel="stylesheet" href="/css/aloneTwitter.css"/>
     <link rel="stylesheet"
           href="/dist/lib/animate.css/animate.min.css"/>
@@ -19,7 +21,8 @@
         </div>
         <div class="nav navbar-nav pull-right">
             <form method="post" th:action="@{/logout}">
-                <button type="submit" class="btn btn-default pull-left" id="logout-button"><i class="glyphicon glyphicon-log-out"></i> </button>
+                <button type="submit" class="btn btn-default pull-left" id="logout-button"><i
+                        class="glyphicon glyphicon-log-out"></i></button>
             </form>
         </div>
     </div>
@@ -28,25 +31,46 @@
 <div class="container-fluid">
     <!-- left control panel -->
     <div class="app-left-panel col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <input type="text" class="form-control" id="tweet-search-input"
-                       placeholder="過去のつぶやきを検索"/>
-                <div id="area-tweet-input">
-                    <div class="form-group">
-                        <label for="tweet-contents">input here...</label>
-                        <textarea class="form-control" id="tweet-contents"></textarea>
-                        <span class="pull-left" id="tweet-length-counter">0</span>
-
-                        <div class="pull-right" id="post-control-buttons">
-                            <button class="btn btn-default" id="delete-post">入力欄をクリア</button>
-                            <button class="btn btn-primary" id="execute-post">書き込み</button>
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#tweet-panel" aria-controls="tweet-panel" role="tab"
+                   data-toggle="tab">つぶやく</a></li>
+            <li role="presentation">
+                <a href="#my-profile" aria-controls="my-profile" role="tab"
+                   data-toggle="tab">マイプロフィール</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tweet-panel" role="tabpanel">
+                <div class="app-twitter-left-panel">
+                    <input type="text" class="form-control" id="tweet-search-input"
+                           placeholder="過去のつぶやきを検索"/>
+                    <div id="area-tweet-input">
+                        <div class="form-group">
+                            <label for="tweet-contents">input here...</label>
+                            <textarea class="form-control" id="tweet-contents"></textarea>
+                            <span class="pull-left" id="tweet-length-counter">0</span>
+                            <div class="pull-right" id="post-control-buttons">
+                                <button class="btn btn-default" id="delete-post">入力欄をクリア</button>
+                                <button class="btn btn-primary" id="execute-post">書き込み</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div role="tabpanel" class="tab-pane" id="my-profile">
+                <div class="app-twitter-left-panel">
+                    <p>ID:<span></span></p>
+                    <p>ユーザー名：<span id="app-user-name"></span></p>
+                    <p>自己紹介</p>
+                    <p id="app-self-introduction">
+                        寿限無寿限無五劫の擦り切れ海砂利水魚の水行末雲来末風来末食う寝る処に住む処やぶら小路の藪柑子パイポパイポパイポ
+                        のシューリンガンシューリンガンのグーリンダイグーリンダイのポンポコピーのポンポコナーの長久命の長助</p>
+                    <button class="btn btn-success pull-right" id="app-profile-save-button">更新</button>
+                </div>
+            </div>
         </div>
-
+        <!-- user search -->
+        <input type="text" class="form-control" placeholder="ユーザーを検索"/>
     </div>
     <!-- main contents -->
     <div class="app-main-panel">
@@ -58,10 +82,11 @@
     </div>
 </div>
 
-<script th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
+<script th:src="@{/dist/lib/jquery/dist/jquery.min.js}"></script>
+<script th:src="@{/dist/lib/bootstrap/dist/js/bootstrap.min.js}"></script>
 <script
         src="/dist/lib/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js"></script>
+<script th:src="@{/dist/lib/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js}"></script>
 <script th:src="@{/dist/twitter.min.js}"></script>
 </body>
 </html>

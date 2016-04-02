@@ -1,3 +1,5 @@
+$app-bs-gray: #ddd;
+
 #post-control-buttons {
   padding-top: 10px;
   padding-bottom: 20px;
@@ -7,11 +9,34 @@
   color: red;
 }
 
-.app-left-panel{
+.app-left-panel {
   min-height: 100%;
-  border-right:1px solid gray;
+  border-right: 1px solid gray;
 }
 
-#area-tweet-input{
-  margin:5px;
+#area-tweet-input {
+  margin: 5px;
 }
+
+.app-twitter-left-panel {
+  border: {
+    top: none;
+    right:1px solid $app-bs-gray;
+    left:1px solid $app-bs-gray;
+    bottom: 1px solid $app-bs-gray;
+  }
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: {
+    top: 10px;
+    left: 5px;
+    right: 5px;
+    bottom: 40px;
+  }
+
+  margin:{
+    bottom:10px;
+  }
+
+}
+

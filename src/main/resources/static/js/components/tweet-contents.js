@@ -1,6 +1,5 @@
 "use strict";
-const $ = require('jquery');
-var TweetContents = {
+const TweetContents = {
 
     emptyContents: function () {
         $('#tweet-contents').val('');

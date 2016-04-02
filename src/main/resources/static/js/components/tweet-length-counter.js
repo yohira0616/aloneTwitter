@@ -1,5 +1,5 @@
-var $ = require('jquery');
-var TweetLengthCounter = {
+"use strict";
+const TweetLengthCounter = {
     updateLength: function (length) {
         const $dom = $('#tweet-length-counter');
         $dom.html(length);

@@ -1,5 +1,5 @@
-var $ = require('jquery');
-var ajaxSender = {
+"use strict";
+const ajaxSender = {
     send: function (obj, url, callbackFunc, dataType) {
         $.ajax({
             type: 'POST',
