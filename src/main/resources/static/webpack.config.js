@@ -14,27 +14,14 @@ module.exports = {
             extensions: ['', '.js']
         },
         plugins: [
-            new webpack.optimize.UglifyJsPlugin({
+            /*new webpack.optimize.UglifyJsPlugin({
                 compress: {
                     warnings: false
                 }
-            }),
+            }),*/
             new webpack.ProvidePlugin({
                 jQuery: "jquery",
                 $: "jquery"
-            })],
-        module: {
-            loaders: [{
-                test: /\.jquery.js$/,
-                loader: 'exports?jQuery'
-            },
-                {
-                    test: /\.js$/,
-                    loader: 'babel',
-                    query: {
-                        presets:['es2015']
-                    }
-                }]
-        }
+            })]
     }
 };

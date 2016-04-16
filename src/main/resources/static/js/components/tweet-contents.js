@@ -1,7 +1,6 @@
 "use strict";
 const TweetContents = {
 
-
     emptyContents: function () {
         $('#tweet-contents').val('');
     },

@@ -35,8 +35,10 @@ gulp.task(jsCompile, function () {
     gulp.src('js/**/*.js')
         .pipe(plumber())
         .pipe(webpack(config.webpack))
-        .pipe(babel())
-        .pipe(uglify())
+        .pipe(babel({
+            presets:['es2015']
+        }))
+        //.pipe(uglify())
         .pipe(gulp.dest(TARGET_PATH + 'dist'))
         .pipe(gulp.dest('dist'));
 });
