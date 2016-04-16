@@ -10,3 +10,4 @@ src/main/java/jp/ne/yohira/controller/BookController.java
 .classpath
 logs
 .vagrant
+src/main/resources/static/bower_components

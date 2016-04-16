@@ -1,5 +1,4 @@
 "use strict";
-const $ = require('jquery');
 const tweetContents = require('../components/tweet-contents');
 const tweetLengthCounter = require('../components/tweet-length-counter');
 const posts = require('./../components/posts');

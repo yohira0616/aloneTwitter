@@ -1,5 +1,4 @@
 "use strict";
-const $ = require('jquery');
 
 (function ($) {
     const twitterService = require('./service/twitter-service');

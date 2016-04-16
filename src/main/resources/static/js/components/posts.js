@@ -12,6 +12,5 @@ module.exports = {
                 $target.append(createdHtml);
             });
         });
-
     }
 };
